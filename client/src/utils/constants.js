@@ -1,4 +1,4 @@
-export const HOST = "http://localhost:8747";
+export const HOST = "https://workrise.onrender.com";
 export const API_URL = `${HOST}/api`;
 export const IMAGES_URL = `${HOST}/uploads`;
 

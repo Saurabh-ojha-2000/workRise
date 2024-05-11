@@ -15,7 +15,7 @@ const port = process.env.PORT;
 
 app.use(
   cors({
-    origin: [process.env.ORIGIN],
+    origin: process.env.ORIGIN, // Use the environment variable directly
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
@@ -26,6 +26,9 @@ app.use("/uploads/profiles", express.static("uploads/profiles"));
 
 app.use(cookieParser());
 app.use(express.json());
+
+// Handle OPTIONS requests
+app.options("*", cors());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/gigs", gigRoutes);

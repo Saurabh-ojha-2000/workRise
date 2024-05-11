@@ -48,20 +48,24 @@ export const signup = async (req, res, next) => {
 };
 
 export const login = async (req, res, next) => {
+  console.log("login....")
   try {
     const prisma = new PrismaClient();
     const { email, password } = req.body;
+    console.log(email,password)
     if (email && password) {
       const user = await prisma.user.findUnique({
         where: {
           email,
         },
       });
+      console.log(user)
       if (!user) {
         return res.status(404).send("User not found");
       }
 
       const auth = await compare(password, user.password);
+      console.log(auth)
       if (!auth) {
         return res.status(400).send("Invalid Password");
       }
