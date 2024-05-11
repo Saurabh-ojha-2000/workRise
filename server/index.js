@@ -15,7 +15,7 @@ const port = process.env.PORT;
 
 app.use(
   cors({
-    origin: '*',
+    origin: ['https://work-rise.vercel.app'],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
